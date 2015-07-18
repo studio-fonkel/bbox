@@ -1,0 +1,28 @@
+leaflet:
+  version: VERSION
+  css:
+    base:
+      bower_components/leaflet-dist/leaflet.css: {}
+      bower_components/leaflet.draw/dist/leaflet.draw.css: {}
+  js:
+    bower_components/leaflet-dist/leaflet-src.js: {}
+    bower_components/leaflet.draw/dist/leaflet.draw-src.js: {}
+  dependencies:
+    - core/jquery
+    - core/drupalSettings
+
+field:
+  version: VERSION
+  js:
+    js/field.js: {}
+  dependencies:
+    - core/jquery
+    - core/drupalSettings
+
+views:
+  version: VERSION
+  js:
+    js/views.js: {}
+  dependencies:
+    - core/jquery
+    - core/drupalSettings

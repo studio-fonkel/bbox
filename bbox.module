@@ -1,0 +1,58 @@
+<?php
+
+/**
+ * @file
+ * Contains bbox.module.
+ */
+
+
+/**
+ * Describe data tables and fields (or the equivalent) to Views.
+ *
+ * The table and fields are processed in Views using various plugins. See
+ * the @link views_plugins Views plugins topic @endlink for more information.
+ *
+ * To provide views data for an entity, instead of implementing this hook,
+ * create a class implementing \Drupal\views\EntityViewsDataInterface and
+ * reference this in the "views" annotation in the entity class. The return
+ * value of the getViewsData() method on the interface is the same as this hook.
+ * See the @link entity_api Entity API topic @endlink for more information about
+ * entities.
+ *
+ * The data described with this hook is fetched and retrieved by
+ * \Drupal\views\Views::viewsData()->get().
+ *
+ * @return array
+ *   An associative array describing the structure of database tables and fields
+ *   (and their equivalents) provided for use in Views. At the outermost level,
+ *   the keys are the names used internally by Views for the tables (usually the
+ *   actual table name). Each table's array describes the table itself, how to
+ *   join to other tables, and the fields that are part of the table. The sample
+ *   function body provides documentation of the details.
+ *
+ * @see hook_views_data_alter()
+ */
+function bbox_views_data() {
+  $entity_manager = \Drupal::entityManager();
+
+  $bbox_fields = $entity_manager->getFieldMapByFieldType('bbox');
+
+  foreach ($bbox_fields as $entity_type => $fields) {
+    foreach ($fields as $field_name => $field_info) {
+      $table_name = $entity_type . '__' . $field_name;
+
+      $data[$table_name][$field_name . '_leaflet'] = array(
+        'title' => t('!field: Leaflet widget', array(
+          '!field' => $field_name
+        )),
+        'group' => 'Search',
+        'help' => t('A leaflet widget.'),
+        'filter' => array(
+          'id' => 'bbox_leaflet',
+        ),
+      );
+    }
+  }
+
+  return $data;
+}

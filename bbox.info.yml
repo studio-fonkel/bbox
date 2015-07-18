@@ -1,0 +1,6 @@
+name: Bounding Box field
+type: module
+description: Bounding Box field
+core: 8.x
+package: Other
+

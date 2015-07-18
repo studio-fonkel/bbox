@@ -1,0 +1,21 @@
+{
+  "name": "bbox",
+  "version": "0.0.0",
+  "authors": [
+    "dbeeke <daniel@studiofonkel.nl>"
+  ],
+  "moduleType": [
+    "amd"
+  ],
+  "license": "GPL",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "leaflet.draw": "~0.2.4"
+  }
+}
